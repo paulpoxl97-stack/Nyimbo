@@ -1,0 +1,25 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>NYIMBO | DLM</title><style>*{box-sizing:border-box;font-family:sans-serif}body{margin:0;background:#0a0a0a;color:#fff}header{padding:18px;background:#000;display:flex;justify-content:space-between;border-bottom:1px solid #222}.logo{font-weight:900;font-size:22px}.logo span{color:#ff6a00;font-size:12px;display:block}.badge{background:#00ff88;color:#000;padding:6px 12px;border-radius:20px;font-size:11px;font-weight:900}.wrap{max-width:480px;margin:0 auto}.card{background:#151515;border-radius:20px;padding:20px;margin:14px;border:1px solid #222}.btn{background:#ff6a00;color:#000;padding:17px;border-radius:14px;font-weight:900;border:none;width:100%;margin-top:16px;font-size:16px}input,select{width:100%;padding:14px;border-radius:12px;background:#1f1f1f;border:1px solid #2a2a2a;color:#fff;margin-top:8px}label{font-size:11px;color:#777;text-transform:uppercase;font-weight:700;margin-top:14px;display:block}</style></head><body>
+<header><div class="logo">NYIMBO <span>by Digital Line Media</span></div><div class="badge">LIVE • AIRTEL READY</div></header>
+<div class="wrap">
+<div class="card">
+<h2 style="margin:0">Upload Track</h2><p style="color:#999;font-size:13px">Boomplay, Spotify, Apple Music. Keep 80%. Payout to Airtel Money.</p>
+<label>Track Title</label><input id="title" placeholder="Ndabakako">
+<label>Artist Name</label><input id="artist" placeholder="Yo Maps">
+<label>ISRC Auto</label><input value="ZM-DLM-26-00001" readonly style="color:#ff6a00;font-weight:700">
+<label>Airtel Money Number For Royalties</label><input id="momo" placeholder="0971599651" value="0971599651">
+<label>WAV File</label><input type="file">
+<label>Cover Art</label><input type="file">
+<button class="btn" onclick="go()">Submit → K400</button>
+<p style="text-align:center;color:#555;font-size:11px;margin-top:10px">Airtel Money Payout • 48hrs • DLM Zambia</p>
+</div></div>
+<script>
+function go(){
+var t=document.getElementById('title').value;
+var a=document.getElementById('artist').value;
+if(!t){alert('Enter title');return}
+var msg='NEW NYIMBO UPLOAD:%0A Track: '+t+'%0A Artist: '+a+'%0A Royalties to Airtel: 0971599651';
+window.open('https://wa.me/260971599651?text='+msg,'_blank');
+alert('Submitted! DLM will review. You will get confirmation on 0971599651');
+}
+</script>
+</body></html>
