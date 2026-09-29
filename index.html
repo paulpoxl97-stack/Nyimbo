@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYIMBO by Digital Line Media</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,sans-serif;background:#0f0f0f;color:white;padding-bottom:40px}
+header{padding:16px;background:#000;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
+.logo{font-weight:900;font-size:20px;letter-spacing:.5px} .logo span{color:#ff6a00;font-weight:600;font-size:13px;display:block}
+.badge{background:#00c853;color:#000;padding:6px 10px;border-radius:20px;font-size:11px;font-weight:900}
+.card{background:#1a1a1a;border-radius:18px;padding:18px;margin:12px;border:1px solid #2a2a2a}
+.btn{background:#ff6a00;color:#000;padding:16px 20px;border-radius:14px;font-weight:900;border:none;width:100%;margin-top:14px;font-size:16px}
+input,select{width:100%;padding:14px;border-radius:12px;background:#262626;border:1px solid #333;color:white;margin-top:8px;font-size:15px}
+label{font-size:12px;color:#999;text-transform:uppercase;letter-spacing:.8px;font-weight:700;margin-top:14px;display:block}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px}
+.stat{background:#1a1a1a;padding:14px;border-radius:14px;border:1px solid #222}
+.stat b{font-size:18px;display:block} .green{color:#00e676}
+small{color:#666}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">NYIMBO<span>by Digital Line Media</span></div>
+<div class="badge">LIVE MVP v1</div>
+</header>
+
+<div class="stats">
+<div class="stat"><small>Royalties</small><b class="green">K0.00</b><small>This month</small></div>
+<div class="stat"><small>Payout</small><b>MTN • Airtel</b><small>Min K50</small></div>
+</div>
+
+<div class="card">
+<h2 style="margin:0">Upload Track</h2>
+<p style="color:#aaa;font-size:13px">Zambia's Sonosuite. Distribute to Boomplay, Spotify, Apple Music</p>
+
+<label>Track Title *</label>
+<input id="title" placeholder="e.g. Ndabakako">
+
+<label>Artist / Stage Name *</label>
+<input id="artist" placeholder="e.g. Yo Maps">
+
+<label>ISRC Code (auto-generated)</label>
+<input id="isrc" value="ZM-DLM-26-00001" readonly>
+
+<label>Mobile Money Number for Royalties *</label>
+<div style="display:flex;gap:8px">
+<select style="width:110px"><option>MTN</option><option>Airtel</option></select>
+<input id="momo" placeholder="+260 97 123 4567" style="margin-top:0">
+</div>
+
+<label>WAV File (44.1kHz / 16bit) *</label>
+<input type="file" accept=".wav">
+
+<label>Cover Artwork 3000x3000 *</label>
+<input type="file" accept="image/*">
+
+<label style="display:flex;align-items:center;gap:8px;text-transform:none;font-weight:400"><input type="checkbox" style="width:auto"> I own 100% of this song and artwork</label>
+
+<button class="btn" onclick="submitTrack()">Submit for Distribution →</button>
+<p style="font-size:11px;color:#666;margin-top:12px;text-align:center">✓ You keep 80% • Automatic MoMo Payouts • K400 Single / K700 EP</p>
+</div>
+
+<div class="card">
+<h3 style="margin:0 0 8px 0">Admin QC Panel (For You)</h3>
+<p style="color:#aaa;font-size:12px">You approve here before sending to Boomplay</p>
+<div id="adminList" style="font-size:13px;color:#777">No pending tracks</div>
+</div>
+
+<script>
+function submitTrack(){
+ const t=document.getElementById('title').value;
+ const a=document.getElementById('artist').value;
+ if(!t||!a){alert('Add Track Title + Artist Name');return}
+ const list=document.getElementById('adminList');
+ list.innerHTML = `<div style="background:#262626;padding:12px;border-radius:10px;margin-top:8px;border-left:3px solid #ff6a00"><b>${t}</b> - ${a}<br><small>MoMo: ${document.getElementById('momo').value || 'Not set'} | ISRC: ${document.getElementById('isrc').value}</small><br><small style="color:#00e676">● Ready to send to Boomplay</small></div>` + list.innerHTML;
+ alert('Track submitted! In real version: uploads to Supabase + sends WhatsApp to you. For now, saved in Admin panel below.');
+}
+</script>
+</body>
+</html>
