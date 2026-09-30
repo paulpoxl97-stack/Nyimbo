@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NYIMBO - Zambia Music Distribution | Boomplay Spotify Apple</title>
+<style>
+body{margin:0;background:#0a0a0a;color:#fff;font-family:Arial}
+.header{background:#000;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:9;border-bottom:2px solid #ff6a00}
+.live{background:#00ff88;color:#000;padding:8px 18px;border-radius:20px;font-weight:900;font-size:12px}
+.hero{padding:35px 20px;text-align:center;background:linear-gradient(180deg,#1a1a1a,#0a0a0a)}
+.hero h1{font-size:30px;margin:0}
+.hero h1 span{color:#ff6a00}
+.btn{background:#ff6a00;color:#fff;border:none;padding:16px 30px;border-radius:10px;font-weight:900;font-size:16px;width:100%;max-width:320px;cursor:pointer}
+.card{background:#1e1e1e;margin:15px;border-radius:14px;padding:18px;border:1px solid #333}
+input,select{width:100%;padding:13px;margin:8px 0 14px 0;border-radius:8px;border:1px solid #333;background:#2a2a2a;color:#fff;box-sizing:border-box}
+label{font-size:12px;color:#aaa;font-weight:700}
+.price-box{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:22px 0}
+.price{border:2px solid #333;border-radius:12px;padding:12px;text-align:center}
+.price.best{border-color:#00ff88;background:#0f2218}
+.price h3{margin:0;color:#ff6a00}
+.small{font-size:11px;color:#888}
+.airtel-box{background:#ff0000;color:#fff;padding:12px;border-radius:10px;font-weight:900;text-align:center;margin:10px 0}
+.footer{background:#000;padding:22px;text-align:center;border-top:2px solid #ff6a00;margin-top:30px}
+</style>
+</head>
+<body>
+<div class="header">
+<div><b style="font-size:22px">NYIMBO</b><div style="color:#ff6a00;font-size:11px">by PS DIGITAL LINE MEDIA</div></div>
+<div class="live">LIVE • AIRTEL READY</div>
+</div>
+
+<div class="hero">
+<h1>Zambia's <span>#1 Distribution</span></h1>
+<p>Boomplay, Spotify, Apple Music in 24hrs. Keep 80% via Airtel Money.</p>
+<p class="small">No PayPal needed. Pay to 0971599651 — Official PACRA Business</p>
+<div class="price-box">
+<div class="price"><h3>K400</h3><b>Single</b><div class="small">1 track • ISRC • 80%</div></div>
+<div class="price best"><h3>K600</h3><b>EP</b><div class="small">4 tracks • Popular</div></div>
+<div class="price"><h3>K1000</h3><b>Album</b><div class="small">10 tracks</div></div>
+</div>
+<a href="#upload"><button class="btn">UPLOAD NOW → AIRTEL</button></a>
+<div class="small" style="margin-top:10px">✓ Cheaper than TuneCore $9.99 + No card ✓ Zambian owned</div>
+</div>
+
+<div class="card" id="upload">
+<h2 style="margin:0">Upload Track</h2>
+<div class="airtel-box">AIRTEL MONEY: 0971599651 - Send K400 THEN Upload Proof</div>
+<p class="small">How: Dial *778# > Send Money > 0971599651 > Amount > PIN. Screenshot SMS.</p>
+<label>TRACK TITLE</label><input id="title" placeholder="Ndabakako">
+<label>ARTIST NAME</label><input id="artist" placeholder="Yo Maps">
+<label>PACKAGE</label><select id="pkg"><option>Single K400</option><option>EP K600 - Popular</option><option>Album K1000</option></select>
+<label>ISRC CODE (Auto)</label><input value="ZM-PSDLM-26-00001" style="color:#ff6a00;font-weight:900">
+<label>AIRTEL NUMBER FOR ROYALTIES</label><input id="royalty" value="0971599651">
+<label>WAV FILE (Master)</label><input type="file">
+<label>COVER ART (3000x3000)</label><input type="file">
+<label>AIRTEL PAYMENT PROOF *Required</label><input type="file" id="proof">
+<label><input type="checkbox" id="agree" style="width:auto"> I confirm I own this song 100% and give PS DIGITAL LINE MEDIA right to distribute (80% artist / 20% company)</label>
+<button class="btn" style="background:#00ff88;color:#000;margin-top:14px" onclick="submitTrack()">SUBMIT + WHATSAPP RECEIPT</button>
+</div>
+
+<div class="footer">
+<div style="font-weight:900;color:#ff6a00;font-size:16px">PS DIGITAL LINE MEDIA</div>
+<div style="font-size:13px;color:#fff;margin-top:4px">PACRA Reg: 320190003918 | Lusaka, Zambia</div>
+<div style="font-size:11px;color:#888;margin-top:6px">Official Music Distributor • Boomplay • Spotify • Apple Music • YouTube Content ID</div>
+<div style="font-size:11px;color:#00ff88;margin-top:8px;font-weight:700">Airtel Money: 0971599651 | Verified Business | www.nyimbo.co.zm (coming)</div>
+<div style="font-size:10px;color:#555;margin-top:10px">© 2026 PS DIGITAL LINE MEDIA. All rights protected under Zambia Copyright Act 1994.</div>
+</div>
+
+<script>
+function submitTrack(){
+if(!document.getElementById('proof').files.length){alert('Upload Airtel SMS proof first!');return;}
+if(!document.getElementById('agree').checked){alert('Tick the agreement checkbox');return;}
+let t=document.getElementById('title').value||'New Track';
+let a=document.getElementById('artist').value||'Artist';
+let p=document.getElementById('pkg').value;
+let r=document.getElementById('royalty').value;
+let msg=`NYIMBO PAYMENT - PS DIGITAL LINE MEDIA%0A%0ATrack:${t}%0AArtist:${a}%0APackage:${p}%0ARoyalty Airtel:${r}%0APACRA:320190003918%0A%0AProof uploaded on site. Ready for Boomplay/Spotify.`;
+window.open(`https://wa.me/260971599651?text=${msg}`,'_blank');
+alert('Opening WhatsApp to 0971599651 - Send proof screenshot!');
+}
+</script>
+</body>
+</html>
